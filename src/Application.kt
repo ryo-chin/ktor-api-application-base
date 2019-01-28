@@ -1,5 +1,7 @@
     package com.example
 
+import com.example.factory.DatabaseFactory
+import com.example.service.UserServiceImpl
 import com.fasterxml.jackson.databind.SerializationFeature
 import io.ktor.application.Application
 import io.ktor.application.call
@@ -41,6 +43,9 @@ fun Application.module(testing: Boolean = false) {
         }
     }
 
+    DatabaseFactory.init()
+    val userService = UserServiceImpl()
+
     routing {
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
@@ -48,6 +53,10 @@ fun Application.module(testing: Boolean = false) {
 
         get("/json/jackson") {
             call.respond(mapOf("hello" to "world"))
+        }
+
+        get("/users") {
+            call.respond(userService.fetchAll())
         }
     }
 }

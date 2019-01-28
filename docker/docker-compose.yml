@@ -1,0 +1,11 @@
+version: "3.6"
+services:
+  mysql:
+    container_name: ktor-api-base-mysql
+    build: mysql
+    ports:
+    - "3309:3306"
+    environment:
+      MYSQL_DATABASE: hakiba_db
+      MYSQL_USER: hakiba_user
+      MYSQL_PASSWORD: password

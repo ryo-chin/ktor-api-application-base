@@ -39,4 +39,6 @@ dependencies {
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
 
     compile 'org.jetbrains.exposed:exposed:0.11.2'
+    compile "mysql:mysql-connector-java:5.1.46"
+    compile 'com.zaxxer:HikariCP:3.2.0'
 }
